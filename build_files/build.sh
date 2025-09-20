@@ -34,3 +34,8 @@ rm /etc/yum.repos.d/tailscale.repo
 #### Example for enabling a System Unit File
 
 systemctl enable podman.socket
+
+# Tweak os-release
+sed -i '/^PRETTY_NAME/s/"$/ (Evernight Image)"/' /usr/lib/os-release
+sed -i 's|^VARIANT_ID=.*|VARIANT_ID=damillora-evernight|' /usr/lib/os-release
+sed -i 's|^VARIANT=.*|VARIANT="Evernight Image"|' /usr/lib/os-release
