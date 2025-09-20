@@ -1,0 +1,3 @@
+docker:
+  ghcr.io/damillora/evernight:
+    use-sigstore-attachments: true

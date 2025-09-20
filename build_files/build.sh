@@ -10,7 +10,19 @@ set -ouex pipefail
 # https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/39/x86_64/repoview/index.html&protocol=https&redirect=1
 
 # this installs a package from fedora repos
-dnf5 install -y zsh
+# ZSH is Damillora's main shell
+dnf5 -y install zsh
+
+# Apparently ZSTD is not included by default
+dnf5 -y install zstd
+
+# Damillora's Atelier Damillora uses Tailscale for connectivity
+dnf5 -y config-manager addrepo --from-repofile=https://pkgs.tailscale.com/stable/fedora/tailscale.repo
+dnf5 -y install tailscale
+
+
+# Remove repos
+rm /etc/yum.repos.d/tailscale.repo
 
 # Use a COPR Example:
 #
