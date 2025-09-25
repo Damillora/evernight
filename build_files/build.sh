@@ -20,10 +20,15 @@ dnf5 -y install zstd
 dnf5 -y config-manager addrepo --from-repofile=https://pkgs.tailscale.com/stable/fedora/tailscale.repo
 dnf5 -y install tailscale
 
+# Install RPMFusion
+dnf5 -y install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm 
+dnf5 -y config-manager setopt fedora-cisco-openh264.enabled=1
+
+# Install Steam
+dnf5 -y install steam
 
 # Remove repos
 rm /etc/yum.repos.d/tailscale.repo
-
 # Use a COPR Example:
 #
 # dnf5 -y copr enable ublue-os/staging
@@ -36,6 +41,8 @@ rm /etc/yum.repos.d/tailscale.repo
 systemctl enable podman.socket
 
 # Tweak os-release
-sed -i '/^PRETTY_NAME/s/"$/ (Evernight Image)"/' /usr/lib/os-release
+sed -i '/^PRETTY_NAME/s/ (Kinoite)"$/-evey-'"${BUILD_DATE}"' (Evernight Image)\"/' /usr/lib/os-release
+sed -i '/^VERSION/s/ (Kinoite)"$/-evey-'"${BUILD_DATE}"' (Evernight Image)"/' /usr/lib/os-release
 sed -i 's|^VARIANT_ID=.*|VARIANT_ID=damillora-evernight|' /usr/lib/os-release
 sed -i 's|^VARIANT=.*|VARIANT="Evernight Image"|' /usr/lib/os-release
+sed -i "/^OSTREE_VERSION/s/'$/-evey-${BUILD_DATE}'/" /usr/lib/os-release

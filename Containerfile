@@ -5,7 +5,7 @@ COPY cosign.pub /
 
 # Base Image
 FROM quay.io/fedora/fedora-kinoite:latest
-
+ARG BUILD_DATE="${BUILD_DATE}"
 # Copy needed system files
 COPY system_files /
 
