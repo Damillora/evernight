@@ -30,6 +30,9 @@ jobs:
   build_push:
     name: Build and push image
     runs-on: ubuntu-24.04
+    strategy:
+      matrix:
+        fedora_version: [42]
 
     permissions:
       contents: read
@@ -60,7 +63,7 @@ jobs:
           attempt_delay: 15000
           command: |
             set -eo pipefail
-            skopeo inspect docker://${{ env.BASE_IMAGE }}:latest > source.json
+            skopeo inspect docker://${{ env.BASE_IMAGE }}:${{ matrix.fedora_version }} > source.json
             ver=$(jq -r '.Labels["org.opencontainers.image.version"]' source.json)
             if [ -z "$ver" ] || [ "null" = "$ver" ]; then
               echo "inspected image version must not be empty or null"
@@ -119,7 +122,7 @@ jobs:
         with:
           build-args: |
             BASE_IMAGE=${{ env.BASE_IMAGE }}
-            BASE_VERSION=${{ env.SOURCE_IMAGE_VERSION }}
+            BASE_VERSION=${{ matrix.fedora_version }}
             BUILD_DATE={{ date 'YYYYMMDD' }}
           containerfiles: |
             ./Containerfile
