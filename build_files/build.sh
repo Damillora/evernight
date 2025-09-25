@@ -16,9 +16,6 @@ dnf5 -y install zsh
 # Apparently ZSTD is not included by default
 dnf5 -y install zstd
 
-# Install Kate
-dnf5 -y install kate
-
 # Damillora's Atelier Damillora uses Tailscale for connectivity
 dnf5 -y config-manager addrepo --from-repofile=https://pkgs.tailscale.com/stable/fedora/tailscale.repo
 dnf5 -y install tailscale
