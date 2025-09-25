@@ -118,8 +118,9 @@ jobs:
           cat <<'EOF' >>build_args.txt
           BASE_IMAGE=${{ env.BASE_IMAGE }}
           BASE_VERSION=latest
-          BUILD_DATE={{ date 'YYYYMMDD' }}
+          BUILD_DATE={{date 'YYYYMMDD'}}
           EOF
+          cat build_args.txt >> $GITHUB_OUTPUT
 
       - name: Build Image
         id: build_image
