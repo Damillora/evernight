@@ -214,5 +214,5 @@ jobs:
         with:
           name: "${{ steps.rechunk.outputs.version }} (Evernight Image)"
           tag_name: ${{ steps.rechunk.outputs.version }}
-          body: ${{ steps.rechunk.outputs.changelog }}
+          body_path: ${{ steps.rechunk.outputs.changelog }}
           make_latest: true
