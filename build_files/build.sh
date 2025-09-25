@@ -25,7 +25,7 @@ dnf5 -y install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release
 dnf5 -y config-manager setopt fedora-cisco-openh264.enabled=1
 
 # Install Steam
-dnf5 -y install steam
+dnf5 -y install steam steam-devices
 
 # Remove repos
 rm /etc/yum.repos.d/tailscale.repo
