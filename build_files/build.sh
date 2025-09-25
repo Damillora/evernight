@@ -49,8 +49,8 @@ rm /etc/yum.repos.d/tailscale.repo
 systemctl enable podman.socket
 
 # Tweak os-release
-sed -i '/^PRETTY_NAME/s/ (Kinoite)"$/-evey-'"${BUILD_DATE}"' (Evernight Image)\"/' /usr/lib/os-release
-sed -i '/^VERSION/s/ (Kinoite)"$/-evey-'"${BUILD_DATE}"' (Evernight Image)"/' /usr/lib/os-release
+sed -i '/^PRETTY_NAME/s/ (Kinoite)"$/-evey (Evernight Image)\"/' /usr/lib/os-release
+sed -i '/^VERSION/s/ (Kinoite)"$/-evey (Evernight Image)"/' /usr/lib/os-release
 sed -i 's|^VARIANT_ID=.*|VARIANT_ID=damillora-evernight|' /usr/lib/os-release
 sed -i 's|^VARIANT=.*|VARIANT="Evernight Image"|' /usr/lib/os-release
-sed -i "/^OSTREE_VERSION/s/'$/-evey-${BUILD_DATE}'/" /usr/lib/os-release
+sed -i "/^OSTREE_VERSION/s/'$/-evey'/" /usr/lib/os-release

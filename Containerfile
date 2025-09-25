@@ -9,7 +9,6 @@ COPY cosign.pub /
 
 # Base Image
 FROM ${BASE_IMAGE}:${BASE_VERSION}
-ARG BUILD_DATE="${BUILD_DATE}"
 # Copy needed system files
 COPY system_files /
 
