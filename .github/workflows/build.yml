@@ -32,7 +32,7 @@ jobs:
     runs-on: ubuntu-24.04
 
     permissions:
-      contents: read
+      contents: write
       packages: write
       id-token: write
 
@@ -111,6 +111,18 @@ jobs:
           prev-ref: "${{ env.IMAGE_REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.DEFAULT_TAG }}"
           skip_compression: true
           version: ${{ env.SOURCE_IMAGE_VERSION }}-evey
+          changelog: |
+            # Evernight Image <version>
+            ## Major package versions
+            - Kernel: <relver:kernel>
+            - Tailscale: <version:tailscale>
+            - KDE Plasma: <version:plasma-desktop>
+
+            ## Changes since last version (<previous>):
+            ### Commits
+            <commits>
+            ### Package Changes:
+            <pkgupd>
           labels: |
             io.artifacthub.package.readme-url=https://raw.githubusercontent.com/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}/refs/heads/main/README.md
             org.opencontainers.image.created=${{ steps.date.outputs.date }}
@@ -127,7 +139,6 @@ jobs:
             io.artifacthub.package.prerelease=false
             containers.bootc=1
             # Rechunk strips out all the labels during build, this needs to be reapplied here with newline separator
-
 
       # Image metadata for https://artifacthub.io/ - This is optional but is highly recommended so we all can get a index of all the custom images
       # The metadata by itself is not going to do anything, you choose if you want your image to be on ArtifactHub or not.
@@ -197,3 +208,11 @@ jobs:
           TAGS: ${{ steps.push.outputs.digest }}
           COSIGN_EXPERIMENTAL: false
           COSIGN_PRIVATE_KEY: ${{ secrets.SIGNING_SECRET }}
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2 # v2
+        with:
+          name: "${{ steps.rechunk.outputs.version }} (Evernight Image)"
+          tag_name: ${{ steps.rechunk.outputs.version }}
+          body: ${{ steps.rechunk.outputs.changelog }}
+          make_latest: true
