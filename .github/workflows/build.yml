@@ -119,7 +119,7 @@ jobs:
           cat <<'EOF' >>build_args.txt
           BASE_IMAGE=${{ env.BASE_IMAGE }}
           BASE_VERSION=latest
-          BUILD_DATE=-${{ steps.date.outputs.build_date}}
+          BUILD_DATE=${{ steps.date.outputs.build_date}}
           EOF
           cat build_args.txt >> $GITHUB_OUTPUT
 
