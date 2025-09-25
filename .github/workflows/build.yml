@@ -51,6 +51,7 @@ jobs:
           # https://artifacthub.io/docs/topics/repositories/container-images/
           # https://linux.die.net/man/1/date
           echo "date=$(date -u +%Y\-%m\-%d\T%H\:%M\:%S\Z)" >> $GITHUB_OUTPUT
+          echo "build_date=$(date -u +%Y%m%d)" >> $GITHUB_OUTPUT
 
       - name: Get container version
         id: labels
@@ -91,7 +92,7 @@ jobs:
           # Default tags are "$DEFAULT_TAG" and "$DEFAULT_TAG.$date".
           tags: |
             type=raw,value=${{ env.DEFAULT_TAG }}
-            type=raw,value=${{ env.SOURCE_IMAGE_VERSION }}-evey-{{date 'YYYYMMDD'}}
+            type=raw,value=${{ env.SOURCE_IMAGE_VERSION }}-evey-${{ steps.date.outputs.build_date}}
             type=sha,enable=${{ github.event_name == 'pull_request' }}
             type=ref,event=pr
           labels: |
@@ -103,7 +104,7 @@ jobs:
             org.opencontainers.image.title=${{ env.IMAGE_NAME }}
             org.opencontainers.image.url=https://github.com/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}
             org.opencontainers.image.vendor=${{ github.repository_owner }}
-            org.opencontainers.image.version=${{ env.SOURCE_IMAGE_VERSION }}-evey-{{date 'YYYYMMDD'}}
+            org.opencontainers.image.version=${{ env.SOURCE_IMAGE_VERSION }}-evey-${{ steps.date.outputs.build_date}}
             io.artifacthub.package.deprecated=false
             io.artifacthub.package.keywords=${{ env.IMAGE_KEYWORDS }}
             io.artifacthub.package.license=Apache-2.0
@@ -118,7 +119,7 @@ jobs:
           cat <<'EOF' >>build_args.txt
           BASE_IMAGE=${{ env.BASE_IMAGE }}
           BASE_VERSION=latest
-          BUILD_DATE={{date 'YYYYMMDD'}}
+          BUILD_DATE=-${{ steps.date.outputs.build_date}}
           EOF
           cat build_args.txt >> $GITHUB_OUTPUT
 
