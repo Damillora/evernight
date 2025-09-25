@@ -1,10 +1,14 @@
 # Allow build scripts to be referenced without being copied into the final image
+ARG BASE_IMAGE="${BASE_IMAGE}"
+ARG BASE_VERSION="${BASE_VERSION}"
+
+
 FROM scratch AS ctx
 COPY build_files /
 COPY cosign.pub /
 
 # Base Image
-FROM quay.io/fedora/fedora-kinoite:latest
+FROM ${BASE_IMAGE}:latest
 ARG BUILD_DATE="${BUILD_DATE}"
 # Copy needed system files
 COPY system_files /
