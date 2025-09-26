@@ -10,7 +10,6 @@ Fedora Kinoite, plus:
 * `zsh`
 * `zstd`
 * `tailscaled`
-* `kate`
 * RPMFusion codecs
 * Steam
   
