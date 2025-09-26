@@ -21,7 +21,7 @@ dnf5 -y config-manager addrepo --from-repofile=https://pkgs.tailscale.com/stable
 dnf5 -y install tailscale
 
 # Install RPMFusion
-dnf5 -y install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm 
+dnf5 -y install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 dnf5 -y config-manager setopt fedora-cisco-openh264.enabled=1
 
 # Install Steam
@@ -31,6 +31,9 @@ dnf5 -y install steam steam-devices
 dnf5 -y swap ffmpeg-free ffmpeg --allowerasing
 #dnf5 -y update @multimedia --setopt="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin
 dnf5 -y install intel-media-driver
+
+# Install LibreOffice
+dnf5 -y install libreoffice libreoffice-kf6
 
 # Remove repos
 rm /etc/yum.repos.d/tailscale.repo

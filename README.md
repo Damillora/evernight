@@ -7,15 +7,19 @@ A Fedora Kinoite-based [bootc](https://github.com/bootc-dev/bootc) image, servin
 ## Included software
 
 Fedora Kinoite, plus:
+### System packages
 * `zsh`
 * `zstd`
 * `tailscaled`
 * RPMFusion codecs
+
+## Apps
 * Steam
-  
+* LibreOffice
+
 ## Installation
 
-First, [Install Kinoite](https://docs.fedoraproject.org/en-US/fedora-kinoite/installation/). 
+First, [Install Kinoite](https://docs.fedoraproject.org/en-US/fedora-kinoite/installation/).
 
 From the newly installed Fedora Kinoite installation, rebase to an unsigned image first, then reboot:
 ```sh
