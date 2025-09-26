@@ -1,8 +1,8 @@
-# This file is completely optional, but if you want to index your image on https://artifacthub.io/ you can 
+# This file is completely optional, but if you want to index your image on https://artifacthub.io/ you can
 # Sign up and add the Repository ID to the right field. Owners fields are optional.
-# Examples: https://artifacthub.io/packages/search?ts_query_web=ublue&sort=relevance&page=1 
+# Examples: https://artifacthub.io/packages/search?ts_query_web=ublue&sort=relevance&page=1
 
-repositoryID: damillora-castorice # Fill in with your own credentials
+repositoryID: 04dc3dfc-782d-4e24-9e8c-27126f7f270b # Fill in with your own credentials
 owners: # (optional, used to claim repository ownership)
   - name: Damillora
-    email: damillora@damillora.com
+    email: developer@damillora.com
