@@ -5,20 +5,20 @@ on:
     branches:
       - main
   schedule:
-    - cron: '05 03 * * *'  # 03:05am UTC everyday
+    - cron: "05 03 * * *" # 03:05am UTC everyday
   push:
     branches:
       - main
     paths-ignore:
-      - '**/README.md'
+      - "**/README.md"
   workflow_dispatch:
 
 env:
   IMAGE_DESC: "Damillora's Ever-nightly system"
   IMAGE_KEYWORDS: "bootc"
-  IMAGE_LOGO_URL: "https://avatars.githubusercontent.com/u/5674601?v=4"  # Put your own image here for a fancy profile on https://artifacthub.io/!
-  IMAGE_NAME: "${{ github.event.repository.name }}"  # output image name, usually same as repo name
-  IMAGE_REGISTRY: "ghcr.io/${{ github.repository_owner }}"  # do not edit
+  IMAGE_LOGO_URL: "https://avatars.githubusercontent.com/u/5674601?v=4" # Put your own image here for a fancy profile on https://artifacthub.io/!
+  IMAGE_NAME: "${{ github.event.repository.name }}" # output image name, usually same as repo name
+  IMAGE_REGISTRY: "ghcr.io/${{ github.repository_owner }}" # do not edit
   DEFAULT_TAG: "latest"
   BASE_IMAGE: "quay.io/fedora/fedora-kinoite"
 
@@ -106,7 +106,7 @@ jobs:
         id: rechunk
         uses: hhd-dev/rechunk@v1.2.3
         with:
-          rechunk: 'ghcr.io/hhd-dev/rechunk:v1.0.1'
+          rechunk: "ghcr.io/hhd-dev/rechunk:v1.0.1"
           ref: "evey"
           prev-ref: "${{ env.IMAGE_REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.DEFAULT_TAG }}"
           skip_compression: true
@@ -114,14 +114,13 @@ jobs:
           changelog: |
             # Evernight Image <version>
             ## Major package versions
-            - Kernel: <relver:kernel>
-            - Tailscale: <version:tailscale>
-            - KDE Plasma: <version:plasma-desktop>
+            |**Package**   |**Version**             |
+            |--------------|------------------------|
+            |**Kernel**    |<relver:kernel>         |
+            |**Tailscale** |<version:tailscale>     |
+            |**KDE Plasma**|<version:plasma-desktop>|
 
-            ## Changes since last version (<previous>):
-            ### Commits
-            <commits>
-            ### Package Changes:
+            ## Package changes since last version (<previous>):
             <pkgupd>
           labels: |
             io.artifacthub.package.readme-url=https://raw.githubusercontent.com/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}/refs/heads/main/README.md
