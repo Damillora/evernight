@@ -14,6 +14,7 @@ Fedora Kinoite, plus:
 * RPMFusion codecs
 
 ## Apps
+* `ksshaskpass`
 * Steam
 * LibreOffice
 

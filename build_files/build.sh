@@ -35,6 +35,9 @@ dnf5 -y install intel-media-driver
 # Install LibreOffice
 dnf5 -y install libreoffice libreoffice-kf6
 
+# Install KSSHAskPass
+dnf5 -y install ksshaskpass
+
 # Remove repos
 rm /etc/yum.repos.d/tailscale.repo
 # Use a COPR Example:
