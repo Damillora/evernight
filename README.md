@@ -16,7 +16,6 @@ Fedora Kinoite, plus:
 ## Apps
 * `ksshaskpass`
 * Steam
-* LibreOffice
 
 ## Installation
 

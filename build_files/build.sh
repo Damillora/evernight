@@ -32,9 +32,6 @@ dnf5 -y swap ffmpeg-free ffmpeg --allowerasing
 #dnf5 -y update @multimedia --setopt="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin
 dnf5 -y install intel-media-driver
 
-# Install LibreOffice
-dnf5 -y install libreoffice libreoffice-kf6
-
 # Install KSSHAskPass
 dnf5 -y install ksshaskpass
 
