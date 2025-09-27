@@ -11,11 +11,9 @@ Fedora Kinoite, plus:
 * `zsh`
 * `zstd`
 * `tailscaled`
-* RPMFusion codecs
-
-## Apps
 * `ksshaskpass`
-* Steam
+* `steam-devices`
+* RPMFusion codecs
 
 ## Installation
 

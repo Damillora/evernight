@@ -20,12 +20,12 @@ dnf5 -y install zstd
 dnf5 -y config-manager addrepo --from-repofile=https://pkgs.tailscale.com/stable/fedora/tailscale.repo
 dnf5 -y install tailscale
 
+# Install Steam udev rules
+dnf5 -y install steam-devices
+
 # Install RPMFusion
 dnf5 -y install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 dnf5 -y config-manager setopt fedora-cisco-openh264.enabled=1
-
-# Install Steam
-dnf5 -y install steam steam-devices
 
 # Install Codecs
 dnf5 -y swap ffmpeg-free ffmpeg --allowerasing
