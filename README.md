@@ -8,11 +8,11 @@ A Fedora Kinoite-based [bootc](https://github.com/bootc-dev/bootc) image, servin
 
 Fedora Kinoite, plus:
 ### System packages
-* `zsh`
 * `zstd`
 * `tailscaled`
 * `ksshaskpass`
 * `steam-devices`
+* `gcc` and `gcc-c++`
 * RPMFusion codecs
 
 ## Installation
