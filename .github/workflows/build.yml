@@ -117,6 +117,7 @@ jobs:
             |**Package**   |**Version**             |
             |--------------|------------------------|
             |**Kernel**    |<relver:kernel>         |
+            |**GCC**       |<version:gcc>           |
             |**Tailscale** |<version:tailscale>     |
             |**KDE Plasma**|<version:plasma-desktop>|
 
