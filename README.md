@@ -12,7 +12,6 @@ Fedora Kinoite, plus:
 * `tailscaled`
 * `ksshaskpass`
 * `steam-devices`
-* `gcc` and `gcc-c++`
 * RPMFusion codecs
 
 ## Installation
