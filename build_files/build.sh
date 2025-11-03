@@ -7,10 +7,6 @@ set -ouex pipefail
 # Apparently ZSTD is not included by default
 dnf5 -y install zstd
 
-#  Use the KDE Final Copr repo for latest and greatest KDE software
-dnf5 -y copr enable @kdesig/kde-final
-dnf5 -y upgrade
-
 # Damillora's Atelier Damillora uses Tailscale for connectivity
 dnf5 -y config-manager addrepo --from-repofile=https://pkgs.tailscale.com/stable/fedora/tailscale.repo
 dnf5 -y install tailscale
